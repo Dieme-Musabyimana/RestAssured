@@ -23,5 +23,6 @@ public class Access_Token {
                 .statusCode(200)
                 .extract()
                 .path("access_token");
+//        System.out.println("Dummy test");
     }
 }
