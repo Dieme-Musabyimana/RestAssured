@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "page": {
+      "type": "number"
+    },
+    "per_page": {
+      "type": "number"
+    },
+    "total": {
+      "type": "number"
+    },
+    "total_pages": {
+      "type": "number"
+    },
+    "data": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "required": [
+          "id",
+          "email",
+          "first_name",
+          "last_name",
+          "avatar"
+        ],
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "email": {
+            "type": "string",
+            "minLength": 1
+          },
+          "first_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "last_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avatar": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "support": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "url",
+        "text"
+      ]
+    },
+    "_meta": {
+      "type": "object",
+      "properties": {
+        "powered_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "docs_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "upgrade_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "example_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "variant": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cta": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "label",
+            "url"
+          ]
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "powered_by",
+        "docs_url",
+        "upgrade_url",
+        "example_url",
+        "variant",
+        "message",
+        "cta",
+        "context"
+      ]
+    }
+  },
+  "required": [
+    "page",
+    "per_page",
+    "total",
+    "total_pages",
+    "data",
+    "support",
+    "_meta"
+  ]
+}

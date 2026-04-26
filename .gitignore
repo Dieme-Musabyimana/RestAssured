@@ -1,0 +1,17 @@
+# --- JAVA/MAVEN ---
+target/
+*.class
+
+# --- IDEs & TOOLS ---
+.idea/
+.mvn/
+.zencoder/
+*.iml
+
+# --- SENSITIVE DATA ---
+src/test/resources/config.properties
+
+# --- ALLURE & REPORTS ---
+allure-results/
+allure-report/
+test-output/
