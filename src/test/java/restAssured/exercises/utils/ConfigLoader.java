@@ -9,6 +9,8 @@ public class ConfigLoader {
     private ConfigLoader(){
         // Now returns an empty object if file is missing instead of crashing
 //        Now this is the dummy test
+        // This is a test comment for Jenkins triggerin
+        // This is a test comment for Jenkins triggering
         properties = PropertyUtils.propertyLoader("src/test/resources/config.properties");
     }
 
