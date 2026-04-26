@@ -7,6 +7,7 @@ public class ConfigLoader {
     private static ConfigLoader configLoader;
 
     private ConfigLoader(){
+        // Now returns an empty object if file is missing instead of crashing
         properties = PropertyUtils.propertyLoader("src/test/resources/config.properties");
     }
 
@@ -17,33 +18,36 @@ public class ConfigLoader {
         return configLoader;
     }
 
+    private String getPropertyValue(String key) {
+        // 1. Check System Properties (Jenkins -D variables)
+        String prop = System.getProperty(key);
+
+        // 2. If null, check the physical config.properties file
+        if (prop == null && properties != null) {
+            prop = properties.getProperty(key);
+        }
+
+        if (prop != null) return prop;
+        else throw new RuntimeException("Property " + key + " is not specified in Jenkins or config.properties");
+    }
+
     public String getClientId(){
-        String prop = properties.getProperty("client_id");
-        if(prop != null) return prop;
-        else throw new RuntimeException("property client_id is not specified in the config.properties file");
+        return getPropertyValue("client_id");
     }
 
     public String getClientSecret(){
-        String prop = properties.getProperty("client_secret");
-        if(prop != null) return prop;
-        else throw new RuntimeException("property secret is not specified in the config.properties file");
+        return getPropertyValue("client_secret");
     }
 
     public String getClientGrantType(){
-        String prop = properties.getProperty("grant_type");
-        if(prop != null) return prop;
-        else throw new RuntimeException("property grant_type is not specified in the config.properties file");
+        return getPropertyValue("grant_type");
     }
 
     public String getRefreshToken(){
-        String prop = properties.getProperty("refresh_token");
-        if(prop != null) return prop;
-        else throw new RuntimeException("property refresh_token is not specified in the config.properties file");
+        return getPropertyValue("refresh_token");
     }
 
     public String getUser(){
-        String prop = properties.getProperty("user");
-        if(prop != null) return prop;
-        else throw new RuntimeException("property user is not specified in the config.properties file");
+        return getPropertyValue("user");
     }
 }
